@@ -1,0 +1,144 @@
+
+.account-page {
+  display: grid;
+  grid-template: auto / 300px 1fr;
+  width: 100%;
+  grid-gap: 50px;
+  justify-content: center;
+  padding: 20px;
+
+  .user-avatar {
+    @include size(300px, 300px);
+    @include position(relative);
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #fff;
+
+    img {
+      @include size(100%, 100%);
+      border-radius: 50%;
+      
+      &.blur {
+        opacity: 0.8;
+      }
+    }
+
+    #edit-avatar {
+      border-radius: 50%;
+      @include size(47px, 47px);
+      @include position(absolute, _, 30px, 15px);
+      @include displayFlex(_, _, center, center);
+
+      svg {
+        @include size(20px, 20px);
+        padding: 0;
+      }
+    }
+
+    .operations {
+      @include position(absolute, 50%, _, _, 50%);
+      @include displayFlex(_, 16px, center, center);
+      margin-top: -20px;  
+
+      .btn {
+        padding: 0;
+        border-radius: 50%;
+        @include size(43px, 43px);
+        @include displayFlex(_, _, center, center);
+      }
+    }
+
+    #select-avatar, #remove-avatar {
+      position: absolute;
+      @include size(43px, 43px);
+      bottom: 17px;
+      right: 33px;
+      border-radius: 50%;
+      transition: all 0.3s ease-in-out;
+      padding: 0;
+      @include displayFlex(_, _, center, center);
+    }
+
+    #remove-avatar {
+      &.show {
+        right: -14px;
+        bottom: 3px;
+      }
+    }
+
+    #select-avatar {
+      &.show {
+        bottom: -30px;
+        right: 23px;
+      }
+    }
+  }
+
+  .user-info {
+    @include displayFlex(column, 17px, center);
+
+    .form {
+      textarea {
+        resize: none;
+        @include size(_, 120px);
+      }
+
+      .note {
+        font-size: 15px;
+        padding: 0 3px;
+      }
+    }
+
+    .btn-group {
+      display: grid;
+      grid-template: auto / repeat(2, 150px);
+      grid-gap: 10px;
+      justify-content: end;
+
+      &.isEmpty {
+        grid-template-columns: 150px;
+      }
+
+      .btn {
+        @include size(100%, 45px);
+        border-radius: 8px;
+        font: {
+          size: 17px;
+          weight: 500;
+        }
+        letter-spacing: 0.3px;
+      }
+    }
+
+    .user-about {
+      @include position(relative);
+
+      #editAboutOfUser {
+        @include position(absolute, -22px, 0);
+        @include size(18px, 18px);
+        border-radius: 50%;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .account-page {
+    @include displayFlex(column, 20px, _, center);
+
+    .user-info {
+      @include size(100%);
+
+      .user-fullname {
+        text-align: center;
+      } 
+
+      .user-about>p{
+        text-align: justify;
+      }
+    }
+  }
+}

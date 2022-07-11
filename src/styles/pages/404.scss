@@ -1,0 +1,34 @@
+.page-not-found {
+  margin-top: 50px;
+  @include displayFlex(column, 15px, center, center);
+
+  .title, p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 160px;
+  }
+
+  .message {
+    margin-top: -45px;
+    font-size: 40px;
+  }
+
+  .link {
+    a {
+      text-shadow: 1px 1px 1px rgb(144, 201, 235);
+      text-decoration: underline;
+    }
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  .page-not-found {
+    .title {
+      font-size: 120px;
+    }
+  }
+}

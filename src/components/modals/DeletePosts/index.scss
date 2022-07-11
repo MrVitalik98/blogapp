@@ -1,0 +1,68 @@
+@mixin displayFlex($flexDirection, $gap: 0, $justifyContent: none, $alignItems: none) {
+  display: flex;
+  flex-direction: $flexDirection;
+  gap: $gap;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+
+#delete-posts-modal {
+  .modal-content {
+    width: 450px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .modal-body {
+      @include displayFlex(column, 10px, center, center);
+      padding: 15px 25px 30px;
+      
+      .alert-icon {
+        width: 160px;
+        height: 160px;
+      }
+
+      .text, .title {
+        margin: 0;
+        text-align: center;
+      }
+
+      .content {
+        @include displayFlex(column, 3px);
+
+        .title {
+          font-size: 25px;
+        }
+      }
+
+      .text {
+        font-size: 17px;
+      }
+
+      .btn-group {
+        width: 100%;
+        margin-top: 10px;
+        @include displayFlex(row, 10px);
+
+        .btn {
+          height: 45px;
+          border-radius: 5px;
+          font-size: 18px;
+          @include displayFlex(row, 6px, center, center);
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 576px) {
+  #delete-posts-modal {
+    .modal-content {
+      width: 320px;
+    } 
+  }
+}

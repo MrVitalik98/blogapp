@@ -1,0 +1,113 @@
+#settings {
+  form {
+    @include displayFlex(column, 15px);
+    padding: 30px 65px 45px;
+    max-width: 700px;
+    background: #F9F8FA;
+    margin: 30px auto 15px;
+    border-radius: 10px;
+
+    .title {
+      text-align: center;
+      font-size: 45px;
+      letter-spacing: 0.5px;
+    }
+
+    .block {
+      @include displayFlex(row, 20px, center, flex-start, wrap);
+
+      &.passwords {
+        flex-direction: column;
+      }
+      
+      .col {
+        min-width: 250px;
+        padding: 0;
+        @include displayFlex(column, 3px);
+
+        label {
+          margin: 0;
+          width: max-content;
+        }
+
+        .error {
+          color: #DC3545;
+        }
+
+        .input-group {
+          height: 45px;
+          position: relative;
+
+          input {
+            border: 1px solid #ced4da;
+            height: 100%;
+            padding: 6px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            z-index: 2;
+
+            &::placeholder {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-36%);
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          #firstname, #lastname, #email {
+            padding-left: 40px;
+          }
+
+          #currentPassword, #newPassword, #confirmNewPassword {
+            padding-right: 40px;
+          }
+
+          &-append, &-prepend {
+            z-index: 3;
+            transform: translateY(-50%);
+
+            svg {
+              @include size(18px, 18px);
+            }
+          }
+
+          &-prepend {
+            margin-right: 15px;
+            @include position(absolute, 50%, _, _, 16px);
+          }
+
+          &-append {
+            @include position(absolute, 50%, 16px, _, _);
+          }
+        }
+      }
+    }
+
+    .btn-group {
+      margin-top: 25px;
+      @include displayFlex(row, 15px, flex-end, center);
+
+      .btn {
+        width: 120px;
+        border-radius: 5px;
+        min-height: 45px;
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  #settings {
+    form {
+      margin: 0 auto;
+      padding: 25px 30px;
+      border-radius: 0;
+    }
+  }
+}

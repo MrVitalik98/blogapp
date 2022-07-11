@@ -1,0 +1,123 @@
+nav {
+  @include size(_, 60px);
+  @include displayFlex(_, _, _ center);
+
+  .navbar-brand {
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .navbar-collapse {
+    @include displayFlex(_, _, flex-end);
+
+    .navbar-nav {
+      @include displayFlex();
+
+      .nav-link {
+        letter-spacing: 0.3px;
+        @include displayFlex(_, 6px, _, center);
+        font: {
+          size: 19px;
+          weight: 500;
+        }
+
+        svg {
+          @include size(25px, 25px);
+        }
+      }
+
+      .dropdown-toggle {
+        @include displayFlex(_, 5px, _, center);
+
+        .user-avatar {
+          @include size(36px, 36px);
+          border-radius: 50%;
+        }
+      }
+
+      .dropdown-menu {
+        @include size(190px);
+        position: absolute;
+        left: -105px;
+        top: 50px;
+
+        .dropdown-item {
+          .nav-link {
+            color: #34344d;
+            font-size: 16px;
+            padding: 0;
+            @include displayFlex(_, 7px, _, center);
+            
+            svg {
+              @include size(21px, 21px);
+            }
+          }
+
+          &:active {
+            background: #34344d;
+            
+            .nav-link {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  nav {
+    min-height: 70px;
+    height: auto;
+
+    .navbar-collapse {
+      @include displayFlex(column, 0, center, center);
+
+      .navbar-nav {
+        @include displayFlex(column, 0, center, flex-start);
+
+        .nav-link {
+          font-size: 19px;
+        }
+      }
+    }
+
+    #toggleMenu {
+      box-sizing: border-box;
+
+      svg {
+        @include size(22px, 22px);
+      }
+    }
+  }
+
+  .mobile-navigation-menu {
+    @include size(100%, 100vh);
+    @include position(fixed, 0, _, _, -100%);
+    @include displayFlex(row, 0, center, center);
+    background: rgba(19, 18, 18, 0.95);
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    z-index: 999;
+
+    &.show {
+      @include position(fixed, 0, _, _, 0);
+    }
+
+    .nav {
+      @include displayFlex(column, 5px, center, center);
+
+      &-link {
+        color: #fff;
+        font: {
+          size: 21px;
+          weight: 500;
+        };
+      }
+    }
+  }
+}

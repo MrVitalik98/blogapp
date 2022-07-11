@@ -1,0 +1,12 @@
+.edit-post-page {
+  @extend .create-post-page;
+
+  .post-body {
+    #editPost {
+      @include size(120px, 45px);
+      margin: 20px;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+  }
+}

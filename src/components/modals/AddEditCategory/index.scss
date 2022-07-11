@@ -1,0 +1,88 @@
+#addOrEditCategoryModal {
+  .modal-content {
+    width: 450px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 25px;
+
+      .title {
+        margin: 0;
+        font: {
+          size: 30px;
+          weight: 600;
+        }
+        letter-spacing: 0.4px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .input-group {
+          display: flex;
+          flex-direction: column;
+        
+          label {
+            margin: 3px;
+            font: {
+              size: 18px;
+              weight: 500;
+            }
+          }
+        
+          input {
+            height: 45px;
+            padding: 16px;
+
+            &:focus {
+              outline: none !important;
+            }
+          }
+
+          .error {
+            color: rgb(230, 21, 21);
+          }
+        }
+
+        .btn-group {
+          display: flex;
+          gap: 10px;
+
+          .btn {
+            width: 195px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            gap: 5px;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 576px) {
+  #addOrEditCategoryModal {
+    .modal-content {
+      width: 320px;
+
+      .modal-body .form .btn-group .btn {
+        width: 144px;
+      }
+    }
+  }
+}
