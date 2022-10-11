@@ -1,0 +1,154 @@
+.posts {
+  @include displayFlex(column, 20px, _, center);
+
+  .post-list {
+    position: relative;
+    @include size(100%, 100%);
+    @include displayFlex(column, 25px);
+
+    .noData {
+      text-align: center;
+      font: {
+        size: 17px;
+        weight: 500;
+      }
+      @include position(absolute, 50%, _, _, 50%);
+      transform: translate(-50%, -50%);
+    }
+  
+    .post-item {
+      background: #F8F9FA;
+      padding: 7px;
+      border-radius: 8px;
+      overflow: hidden;
+      @include displayFlex(column);
+      
+      .post-header {
+        @include size(_, 450px);
+  
+        .post-image {
+          @include size(100%, 100%);
+        }
+      }
+  
+      .post-body {
+        padding: 15px 15px 20px;
+        @include displayFlex(column, 15px);
+  
+        #info {
+          @include displayFlex(_, 20px, center, center);
+          
+          .author {
+            @include displayFlex(_, 7px, center, center);
+  
+            &-avatar {
+              @include size(30px, 30px);
+              border-radius: 50%;
+            }
+  
+            &-name {
+              margin: 0;
+            }
+          }
+  
+          .post-created-date {
+            @extend .author;
+  
+            .calendar-icon {
+              @include size(25px, 25px);
+            }
+  
+            .date {
+              margin: 0;
+              font-size: 15px;
+              @include size(max-content);
+            }
+          }
+        }
+  
+        .title {
+          margin: 10px 0 -20px;
+        }
+  
+        #desc {
+          @include displayBox(145px, 5);
+          margin-bottom: 15px;
+          font-size: 17px;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+  
+          .post-description {
+            text-indent: 15px;
+            margin: 0;
+  
+            &::first-letter {
+              font-weight: 600 !important;
+              font-size: 30px !important;
+              color: rgb(255, 166, 0) !important;
+            }
+          }
+        }
+  
+        #actions {
+          @include displayFlex(_, 20px, center, center);
+  
+          .likes {
+            @include displayFlex();
+  
+            .icon {
+              font-size: 30px;
+            }
+  
+            .numberOfLikes {
+              margin-top: -5px;
+            }
+          }
+  
+          .chat {
+            @extend .likes;
+  
+            .icon {
+              font-size: 28px;
+            }
+            
+            .numberOfComments {
+              margin-top: -5px;
+            }
+          }
+  
+          .share {
+            @extend .chat;
+          }
+        }
+      }
+  
+      &.fetched {
+        &:hover {
+          cursor: pointer;
+        } 
+      }
+    }
+  }
+
+  #loadMorePosts {
+    @include size(120px, 40px);
+  }
+}
+
+
+
+@media screen and (max-width: 576px) {
+  .posts {
+    .post-list {
+      .noData {
+        @include position(fixed, 50%, _, _, 50%);
+        font-size: 18px;
+      }
+
+      .post-item {
+        .post-header {
+          @include size(_, 300px);
+        }
+      }
+    }
+  }
+}

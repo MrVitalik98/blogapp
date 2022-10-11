@@ -1,0 +1,409 @@
+
+.post-container {
+  @include displayFlex(column, 40px);
+
+  .post {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    @include displayFlex(column, 15px);
+  
+    .post-header {
+      @include size(_, 500px);
+      position: relative;
+
+      .post-image {
+        @include size(100%, 100%);
+      }
+
+      .edit-post {
+        @include position(absolute, _, 20px, 20px, _);
+        @include displayFlex(row, _, center, center);
+        @include size(42px, 42px);
+        border-radius: 50%;
+
+        svg {
+          @include size(20px, 20px);
+        }
+      }
+    }
+  
+    .post-body {
+      padding: 15px 20px 20px;
+      @include displayFlex(column, 15px);
+
+      #info {
+        @include displayFlex(_, 20px, center, center);
+        
+        .author {
+          @include displayFlex(_, 7px, center, center);
+
+          &-avatar {
+            @include size(30px, 30px);
+            border-radius: 50%;
+          }
+
+          &-name {
+            margin: 0;
+          }
+        }
+
+        .post-created-date {
+          @extend .author;
+
+          .calendar-icon {
+            @include size(25px, 25px);
+          }
+
+          .date {
+            margin: 0;
+            font-size: 15px;
+            width: max-content;
+          }
+        }
+      }
+
+      .title {
+        margin: 10px 0 -10px;
+        font: {
+          size: 36px;
+          weight: 600;
+        }
+      }
+
+      #desc {
+        margin-bottom: 15px;
+        font-size: 17px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+
+        .post-description {
+          text-indent: 15px;
+          margin: 0;
+
+          &::first-letter {
+            font-weight: 600 !important;
+            font-size: 30px !important;
+            color: rgb(255, 166, 0) !important;
+          }
+        }
+      }
+
+      #actions {
+        @include displayFlex(_, 20px, center, center);
+
+        .likes {
+          @include displayFlex();
+
+          .icon {
+            font-size: 30px;
+            cursor: pointer;
+          }
+
+          .numberOfLikes {
+            margin-top: -5px;
+          }
+        }
+
+        .chat {
+          @extend .likes;
+
+          .icon {
+            font-size: 28px;
+            cursor: pointer;
+          }
+          
+          .numberOfComments {
+            margin-top: -5px;
+          }
+        }
+
+        .share {
+          @extend .chat;
+        }
+      }
+    }
+
+    &::selection {
+      background: #fff;
+    }
+  }
+
+  .about-author {
+    @include size(100%);
+    @include position(relative);
+    margin-top: 50px;
+    background: #fff;
+    border-radius: 15px 30px 15px 30px;
+    padding: 10px 30px;
+    text-align: center;
+
+    .avatar {
+      @include size(100px, 100px);
+      @include position(absolute, -45px, _, _, 50%);
+      border-radius: 50%;
+      margin-left: -50px;
+    }
+
+    img.avatar {
+      background: #fff;
+    }
+
+    .name {
+      margin: 57px 0 5px;
+      font-size: 24px;
+    }
+  }
+
+  .pagination {
+    margin: 18px 0;
+    @include size(100%);
+    @include displayFlex(_, 20px);
+
+    .next-post, .previous-post {  
+      color: #fff;   
+      @include size(100%, 160px);
+      border-radius: 10px;
+      background-size: cover !important;
+      @include position(relative);
+      @include displayFlex(_, 10px, center, center);
+
+      &.enableHover {
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.005)
+        }
+      }
+
+      .content {
+        p { 
+          margin: 0;
+          text-shadow: 1px 1px 1px #000;
+          text-align: center;
+        }
+
+        .date {
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        .title {
+          font-size: 22px;
+          font-weight: 600;
+          max-width: 230px;
+          @include displayBox(28px);
+        }
+      }
+
+      .icon {
+        @include size(50px, 50px);
+        @include position(absolute, 50%);
+        border-radius: 50%;
+        margin-top: -25px;
+      }
+    }
+
+    .previous-post {
+      .icon {
+        left: 25px;
+      }
+    }
+
+    .next-post {
+      .icon {
+        right: 25px;
+      }
+    }
+  }
+
+  .comment-form {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    min-height: 250px;
+    @include displayFlex(column, 10px);
+
+    .title {
+      font-weight: 500;
+      font-size: 30px;
+
+      &::after {
+        content: '';
+        display: block;
+        @include size(100%, 1px);
+        border-radius: 5px;
+        background: #EBEBEB;
+        margin-top: 5px;
+      }
+    }
+
+    .form {
+      @include displayFlex(column, 10px, _, flex-end);
+
+      .input-group {
+        @include displayFlex(column);
+
+        textarea {
+          @include size(100%);
+          min-height: 120px;
+          padding: 8px 16px;
+        }
+      }
+
+      .btn, .btn-skeleton {
+        @include size(160px, 45px);
+        font-size: 17px;
+        letter-spacing: 0.3px;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .postComments {
+    @include displayFlex(column, 5px, center, flex-start);
+    background: #fff;
+    padding: 22px 28px 25px;
+    border-radius: 10px;
+    margin: 15px 0 10px;
+
+    .numberOfComments{
+      width: 100%;
+
+      &::after {
+        content: '';
+        display: block;
+        @include size(100%, 1px);
+        border-radius: 5px;
+        background: #EBEBEB;
+        margin-top: 5px;
+      }
+    }
+
+    .comment-list {
+      @include displayFlex(column, 15px);
+      width: 100%;
+      min-height: 70px;
+      padding: 5px 0;
+      position: relative;
+
+      .noData {
+        @include noData;
+        font: {
+          size: 17px;
+          weight: 500;
+        }
+      }
+
+      .comment-item {
+        @include displayFlex(row, 10px);
+
+        p {
+          margin: 0;
+        }
+
+        .col {
+          @include displayFlex(row, 10px, flex-start, center);
+          padding: 0;
+          
+          .author-avatar {
+            @include size(50px, 50px);
+            border-radius: 50%;
+          }
+          
+          .content {
+            width: 100%;
+            @include displayFlex(column, 4px);
+
+            .header {
+              @include displayFlex(column, 0);
+
+              .author-name {
+                font: {
+                  size: 18px;
+                  weight: 600;
+                }
+              }
+
+              .date {
+                font-size: 12px;
+                margin: -4px 0 0 2px;
+              }
+            }
+
+            .body {
+              padding: 0 3px;
+
+              .comment {
+                font-size: 15px;
+                line-height: 18px;
+              }
+            }
+          }
+        }
+
+        .dropdown {
+          #dropdown-btn {
+            padding: 0;
+
+            svg {
+              @include size(20px, 20px);
+            }
+
+            &::after {
+              display: none;
+            }
+          }
+
+          .dropdown-item {
+            @include displayFlex(row, 8px, flex-start, center);
+            padding: 5px 18px;
+            font-size: 17px;
+
+            &.edit-comment {
+              svg {
+                @include size(16px, 16px);
+              }
+            }
+
+            &.delete-comment {
+              svg {
+                @include size(17px, 17px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .post-container {
+    .pagination {
+      @include displayFlex(column, 15px);
+    }
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  .post-container {
+    padding: 10px;
+
+    .post {
+      .post-header {
+        @include size(_, 300px);
+      }
+
+      .post-body {
+        padding: 15px;
+      }
+    }
+
+    .about-author {
+      padding: 10px 20px;
+    }
+  }
+}

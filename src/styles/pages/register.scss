@@ -1,0 +1,156 @@
+
+.register-page {
+  margin-top: 30px;
+  @include size(100%, 100%);
+  @include displayFlex(column, _, center);
+
+  .title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 45px;
+  }
+
+  form {
+    @include displayFlex(column, 15px, center);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+
+    .input {
+      @include displayFlex(column, 3px);
+    }
+
+    input {
+      @include size(_, 45px);
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+    }
+
+    label {
+      margin: 0;
+      font-size: 18px;
+      @include size(max-content);
+    }
+
+    .error {
+      color: rgb(230, 21, 21);
+    }
+
+    .input-group {
+      @include displayFlex(_, 15px, space-between, _, wrap);
+    }
+
+    .input-container {
+      @extend .input;
+
+      .input-group {
+        @extend .input;
+
+        input {
+          padding-right: 50px;
+        }
+
+        &-append {
+          @include size(35px, 100%);
+          @include position(absolute, 0, 0);
+          @include displayFlex( _, _, _, center);
+
+          label {
+            svg {
+              @include size(22px, 22px);
+            }
+          }
+        }
+      }
+    }
+
+    button[type="submit"] {
+      margin-top: 10px;
+      font-size: 18px;
+      @include size(_, 45px);
+      @include displayFlex( _, _, center, center);
+    }
+  }
+
+  p {
+    margin: 5px 0 10px;
+    font-weight: 500;
+
+    a {
+      margin-left: 5px;
+      color: rgb(20, 66, 112);
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.verifyEmail {
+  width: 360px;
+  @include displayFlex(column, 15px, center, center);
+  box-sizing: border-box;
+  padding: 25px;
+  background: #fff;
+  border-radius: 15px;
+  @include position(fixed, 50%, _, _, 50%);
+  transform: translate(-50%, -50%);
+
+  .header {
+    @include displayFlex(column, 10px, center, center);
+
+    .circle {
+      @include size(100px, 100px);
+      border: 3px solid #007BFF;
+      border-radius: 50%;
+      @include displayFlex(row, 0, center, center);
+
+      svg {
+        @include size(40px, 40px);
+        color:#007BFF;
+      }
+    }
+
+    .title {
+      &::after {
+        content: '';
+        display: block;
+        @include size(100%, 1px);
+        border-radius: 5px;
+        background: #EBEBEB;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .body {
+    @include displayFlex(column, 20px, center, center);
+
+    p {
+      margin: 0;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 576px)  {
+  .register-page {
+    form {
+      padding: 15px 30px;
+
+      .input-group {
+        .input {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .verifyEmail {
+    width: 340px;
+  }
+}

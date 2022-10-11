@@ -1,0 +1,178 @@
+.all-categories {
+  @extend .posts;
+  @include displayFlex(column);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+
+  .header {
+    @include size(100%, 200px);
+    @include displayFlex(column, 5px, center, center);
+    background: url('../../assets/images/posts.webp') center no-repeat;
+    background-size: cover;
+
+    .title, .total-categories {
+      margin: 0;
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .total-categories {
+      @include displayFlex(row, 5px, center);
+      font-size: 22px;
+
+      .total {
+        font-size: 25px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .main {
+    min-height: 370px;
+    position: relative;
+    padding: 5px 5px 25px;
+    @include size(100%, 100%);
+    @include displayFlex(column, 15px);
+
+    .actions {
+      padding: 5px 5px 0;
+      @include size(100%, 50px);
+      @include displayFlex(row, 8px, flex-end, center);
+
+      .btn {
+        @include size(auto, 45px);
+        @include displayFlex(row, 5px, center, center);
+        font: {
+          size: 17px;
+          weight: 500;
+        }
+
+        svg {
+          @include size(22px, 22px);
+        }
+      }
+    }
+
+    .category-list {
+      padding: 30px 0 0;
+      display: grid;
+      grid-template: auto / repeat(auto-fill, minmax(250px, 1fr));
+      grid-gap: 20px;
+
+      .category-item {
+        background: rgb(4, 124, 131);
+        min-height: 200px;
+        position: relative;
+        padding: 20px;
+        border-radius: 15px;
+        color: #fff;
+        @include displayFlex(column, 5px, center, center);
+
+        .dropdown {
+          position: static;
+          width: 0;
+
+          #dropdown-btn {
+            @include position(absolute, 15px, 15px);
+            padding: 0;
+
+            svg {
+              @include size(27px, 27px);
+            }
+
+            &::after {
+              display: none;
+            }
+          }
+
+          .dropdown-item {
+            @include displayFlex(row, 8px, flex-start, center);
+            padding: 5px 18px;
+            font-size: 17px;
+
+            &.edit-category {
+              svg {
+                @include size(16px, 16px);
+              }
+            }
+
+            &.delete-category {
+              svg {
+                @include size(17px, 17px);
+              }
+            }
+          }
+        }
+
+        .category-name, .total-posts {
+          text-shadow: 1px 1px 1px #000;
+          margin: 0;
+          text-align: center;
+        }
+    
+        .category-name {
+          letter-spacing: 0.6px;
+
+          font: {
+            size: 40px;
+            weight: 600;
+          }
+        }
+
+        .total-posts {
+          @include displayFlex(row, 5px);
+
+          font: {
+            size: 20px;
+            weight: 500;
+          }
+
+          .total {
+            font: {
+              size: 22px;
+              weight: 600;
+            }
+            color: rgb(238, 169, 20);
+          }
+        }
+      }
+    }
+
+    .no-data {
+      @include noData;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .all-categories {
+    .main {
+      margin: 0;
+      padding: 15px;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 576px) {
+  .all-categories {
+    border-radius: 0;
+    
+    .main {
+      background: none !important;
+      
+      .no-data {
+        top: 60%;
+      }
+
+      .category-list {
+        padding-top: 15px;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

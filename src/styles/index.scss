@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import './options.scss';
+@import './pages';
+@import './components';
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Nunito;
+  background: url('../assets/images/background.jpg') center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  @include size(100%, 100%);
+
+  #root {
+    @include size(100%, 100%);
+  }
+
+  input:focus, button:focus, textarea:focus, select:focus {
+    box-shadow: none !important;
+  }
+
+  .container {
+    padding: 80px 0 20px;
+    @include size(100%, 100%);
+  }
+
+  .main {
+    display: grid;
+    grid-template: auto / 68% 28%;
+    justify-content: space-between;
+  }
+
+  .loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .spinner-border {
+      @include size(70px, 70px);
+      font-size: 22px;
+    }
+  }
+
+  .btn-loader {
+    @include displayFlex(row, 8px, center, center);
+
+    .spinner-border {
+      @include size(25px, 25px);
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  body {
+    .main {
+      grid-template-columns: 1fr;
+      margin: 20px 8px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  body {
+    .container {
+      padding: 70px 0 0;
+    }
+  }
+}

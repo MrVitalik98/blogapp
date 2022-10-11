@@ -1,0 +1,72 @@
+#share-post-modal {
+  .modal-content {
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 25px 25px 30px;
+
+      .post {
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        &-image {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+
+          img {
+            @extend .post-image;
+          }
+        }
+
+        .title {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+
+      hr {
+        margin-top: 0;
+      }
+
+      .social {
+        display: grid;
+        grid-template: auto / repeat(auto-fill, 45px);
+        justify-content: center;
+        grid-gap: 10px;
+
+        button {
+          width: 45px;
+          height: 45px;
+          border-radius: 10px;
+
+          svg {
+            @extend button;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 576px) {
+  #share-post-modal {
+    .modal-content {
+      width: 320px;
+    } 
+  }
+}

@@ -1,0 +1,51 @@
+@mixin displayFlex($flexDirection: row, $gap: 0, $justifyContent: none, $alignItems: none, $flexWrap: none) {
+  display: flex;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-wrap: $flexWrap;
+  gap: $gap;
+}
+
+
+@mixin size($width: none, $height: none) {
+  width: $width;
+  height: $height;
+}
+
+
+@mixin position($position, $top: none, $right: none, $bottom: none, $left: none) {
+  position: $position !important;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+
+@mixin displayBox($maxHeight, $lineClamp: 1, $boxOrient: vertical) {
+  -webkit-line-clamp: $lineClamp; 
+  display: -webkit-box;
+  -webkit-box-orient: $boxOrient;
+  max-height: $maxHeight;
+  overflow: hidden;
+}
+
+
+@mixin noData {
+  @include size(120px, 120px);
+  @include position(absolute, 50%, _, _, 50%);
+  @include displayFlex(column, 5px, center, center);
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  svg {
+    @include size(80px, 80px);
+  }
+
+  .text {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}

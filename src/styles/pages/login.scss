@@ -1,0 +1,93 @@
+.login-page {
+  @include size(100%, 100%);
+  @include displayFlex(column, _, center);
+  margin-top: 50px;
+
+  .title {
+    font-size: 45px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  form {
+    @include displayFlex(column, 15px, center);
+    @include size(340px);
+    margin: 0 auto;
+    padding: 15px;
+
+    .error {
+      color: rgb(230, 21, 21);
+    }
+
+    .input-group {
+      @include displayFlex(column, _, space-between);
+
+      input {
+        @include size(_, 45px);
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+      }
+  
+      label {
+        margin: 0;
+        font-size: 18px;
+        @include size(max-content);
+      }
+    }
+
+    .input-container {
+      position: relative;
+
+      label {
+        margin: 0;
+        font-size: 18px;
+        @include size(max-content);
+      }
+
+      #forgotPassword {
+        @include position(absolute, 3px, 5px);
+        font-size: 15px;
+        color: rgb(5, 112, 161);
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      .input-group {
+        input {
+          padding-right: 50px;
+        }
+
+        &-append {
+          @include size(35px, 100%);
+          @include position(absolute, 0, 0);
+          @include displayFlex( _, _, _, center);
+
+          label {
+            svg {
+              @include size(22px, 22px);
+            }
+          }
+        }
+      }
+    }
+
+    button[type="submit"] {
+      @include size(_, 45px);
+      font-size: 18px;
+      margin-top: 10px;
+      @include displayFlex(_, _, center, center);
+    }
+  }
+
+  p {
+    margin: 10px 0;
+    font-weight: 500;
+
+    a {
+      margin-left: 5px;
+      color: rgb(20, 66, 112);
+      text-decoration: underline;
+    }
+  }
+}
